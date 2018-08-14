@@ -1,0 +1,58 @@
+﻿@model VideoPlayer.Models.MainPageModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<link href="https://vjs.zencdn.net/7.1.0/video-js.css" rel="stylesheet">
+<script src="https://vjs.zencdn.net/ie8/ie8-version/videojs-ie8.min.js"></script>
+
+<div class="header-bar" style="text-align: center;padding-top: 2%; padding-bottom: 2%">
+    <div class="header-text" style="padding-left: 0px;">
+        <b>Training Videos</b>
+    </div>
+</div>
+
+<h1>@Model.VideoTitle</h1>
+
+<video id="my-video" class="video-js vjs-big-play-centered" controls preload="auto" width="1152" height="648" poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
+    <source id="VideoMP4" src="~/Content/Training Videos/@Model.Video.Parent/@Model.Video.Name" type="video/mp4">
+    <p class="vjs-no-js">
+        To view this video please enable JavaScript, and consider upgrading to a web browser that
+        <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+    </p>
+</video>
+
+<script src="https://vjs.zencdn.net/7.1.0/video.js"></script>
+
+@for (int i = 0; i < Model.VideoList.Parents.Count(); i++)
+{
+    <a class="links-list-header btn-block" id="@(Model.VideoList.Parents[i].Name.Replace(" ", "").Replace("'", ""))Btn" data-toggle="collapse" data-target="#@(Model.VideoList.Parents[i].Name.Replace("'", ""))Links" aria-pressed="true" a><b>@(Model.VideoList.Parents[i].Name) <span id="@(Model.VideoList.Parents[i].Name.Replace(" ", "").Replace("'", ""))Arrow"> < </span></b></a>
+    <ul class="links-ul collapse" id="@(Model.VideoList.Parents[i].Name.Replace(" ", "").Replace("'", ""))Links">
+        @for (int j = 0; j < Model.VideoList.Videos.Count(); j++)
+        {
+            if (Model.VideoList.Videos[j].Parent == Model.VideoList.Parents[i].Name)
+            {
+                <li><a href="@Url.Action("Index", new { video = Model.VideoList.Videos[j].Path } )" class="links-list-items">@Model.VideoList.Videos[j].Name.Replace(".mp4", "")</a></li>
+            }
+        }
+    </ul>
+}
+
+<script>
+
+    @for (int i = 0; i < Model.VideoList.Parents.Count(); i++)
+    {
+        <text>
+        $("#@(Model.VideoList.Parents[i].Name.Replace(" ", "").Replace("'",""))Btn").click(function () {
+            if ($(this).data('clicked')&& !($("#@(Model.VideoList.Parents[i].Name.Replace(" ", "").Replace("'",""))Links").hasClass("collapsing"))) {
+                $("#@(Model.VideoList.Parents[i].Name.Replace(" ", "").Replace("'", ""))Arrow").removeClass("rotate90");
+                $(this).data('clicked', false);
+            } else if (!($("#@(Model.VideoList.Parents[i].Name.Replace(" ", "").Replace("'",""))Links").hasClass("collapsing"))) {
+                $("#@(Model.VideoList.Parents[i].Name.Replace(" ", "").Replace("'", ""))Arrow").addClass("rotate90");
+                $(this).data('clicked', true);
+            }
+        });
+        </text>
+    }
+
+</script>

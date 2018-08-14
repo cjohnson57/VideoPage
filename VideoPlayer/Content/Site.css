@@ -1,0 +1,98 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.header-bar {
+    background-color: rgb(70,29,124);
+    text-align: center;
+}
+
+.header-text {
+    text-align: center;
+    color: white;
+    font-size: 6vmin;
+    display: inline-block;
+    vertical-align: middle;
+    font: bolder;
+    font-family: kalinga;
+    line-height: 43px;
+    margin-bottom: 0px;
+    line-height: 100%;
+}
+
+.links-ul {
+    background-color: rgb(253,208,35);
+    list-style: none;
+    text-decoration: none;
+    color: black;
+    font-size: 150%;
+    margin: auto;
+}
+
+.links-ul > li {
+    padding-left: 20%;
+    text-indent: -.7em;
+    margin-bottom: 1%
+}
+
+/*
+    .links-ul > li:before {
+    content: "\f111";
+    font-family: FontAwesome;
+    font-size: 13px;
+    color: rgb(159,29,36); 
+    margin-right: 10px;
+}
+*/
+
+a.links-list-header:hover, a.links-list-header:active, a.links-list-header:visited, a.links-list-header:focus {
+    color: white;
+    text-decoration: none;
+}
+
+.links-list-header {
+    padding: .5%;
+    text-decoration: none;
+    color: white !important;
+    background-color: rgb(70,29,124);
+    text-align: center;
+    font-size: 150%;
+    margin-top: 1%;
+    margin-bottom: 0%;
+    cursor: pointer;
+}
+
+.links-list-items {
+    color: black;
+    text-align: center;
+}
+
+.links-list-items:hover {
+    color: black;
+}
+
+.rotate90 {
+    display: inline-block;
+    -webkit-transform: rotate(-90deg)
+}
