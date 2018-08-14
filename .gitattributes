@@ -254,4 +254,4 @@ Procfile    text
 *.exe binary
 *.pyc binary
 
-* linguist-vendored
+VideoPlayer/Scripts/* linguist-vendored
