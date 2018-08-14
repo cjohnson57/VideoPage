@@ -253,3 +253,5 @@ Procfile    text
 ## EXECUTABLES
 *.exe binary
 *.pyc binary
+
+* linguist-vendored
